@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .box {
+        position: relative;
+        display: block;
+        width: 50%;
+        height: 500px;
+        margin: 30px auto;
+        border: solid gray 1px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        border-radius: 10px;
+      }
+      .signup {
+        text-align :center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+<div class='signup'>
+        <form action= " " method="POST">
+          {% csrf_token %}
+          username  <input name="username" type="text" /><br>
+          password  <input name="password" type="password" /><br>
+          email     <input name="email" type="text" /><br>
+          <input type="submit" value="회원가입" /></from>
+</div>
+    </div>
+  </body>
+</html>

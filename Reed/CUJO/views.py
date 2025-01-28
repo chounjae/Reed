@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import PostDash, Comment, User, Author
 # Create your views here.
 
 
 def index(request) :
-    postdash = PostDash.objects.order_by('date')[:10]
+    postdash = PostDash.objects.order_by('-like')[:10]
     context = {"Dashboard": postdash}
     return render(request,'CUJO/index.html', context)
 
@@ -34,3 +34,17 @@ def login_view(request) :
         else :
             print('실패')
     return render(request,'CUJO/login.html') 
+
+def logout_view(request) :
+    logout(request)
+    return redirect("CUJO:index")
+
+def signup_view(request) :
+    if request.method == 'POST' :
+        username = request.POST["username"]
+        password = request.POST["password"]
+        email = request.POST["email"]
+        user = User.objects.create_user(username, email, password)
+        user.save()
+        return redirect('CUJO:index')
+    return render(request,'CUJO/signup.html')

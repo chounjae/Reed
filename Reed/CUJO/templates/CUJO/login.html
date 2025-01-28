@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <style>      
+    .box {
+    position: relative;
+    display: block;
+    width: 50%;
+    height: 500px;
+    margin: 30px auto;
+    border: solid gray 1px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    border-radius: 10px;
+  }
+  .logining{
+    margin: auto;
+  }
+</style>
+</head>
   <body>
-    {%if user.is_authenticated %}
-    <h1>환영합니다  {{ user }}님!</h1>
-    <a href={%url "CUJO:index"%}>돌아가기</a>
-    {%else%}
-    <form action= " " method="POST">
-      {% csrf_token %}
-      <input name="username" type="text" />
-      <input name="password" type="password" />
-      <input type="submit" value="로그인" />
-      {%endif%}
-    </form>
+<div class ='box'>
+      {%if user.is_authenticated %}
+      <h1>환영합니다  {{ user }}님!</h1>
+      <a href={%url "CUJO:index"%}>돌아가기</a>
+      {%else%}
+<div class ='logining'>
+        <form action= " " method="POST">
+          {% csrf_token %}
+          username <input name="username" type="text" /><br>
+          password <input name="password" type="password" />
+          <input type="submit" value="Login" />
+          {%endif%}
+        </form>
+</div>
+</div>
   </body>
 </html>

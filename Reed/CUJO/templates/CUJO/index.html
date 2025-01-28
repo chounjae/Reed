@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <style>
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      .box {
+        position: relative;
+        display: block;
+        width: 50%;
+        height: 500px;
+        margin: 30px auto;
+        border: solid gray 1px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        border-radius: 10px;
+      }
+      .login {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+      }
+      .logout {
+        position: absolute;
+        right: 20px;
+        top: 40px;
+      }
+    </style>
+  </head>
   <body>
-    {% if Dashboard %} {%for board in Dashboard%}
-    <li>
-      <a href="{% url 'CUJO:dashboard' board.id %}">{{board.title}}</a>
-    </li>
-    <br />
-    {%endfor%} {%else%} 게시판 없음 {%endif%}
+    <div class="box">
+      {% if Dashboard %} {%for board in Dashboard%}
+      <ol>
+        <a href="{% url 'CUJO:dashboard' board.id %}">{{board.title}}</a>
+      </ol>
+      <br />
+      {%endfor%} {%else%} 게시판 없음 {%endif%} {% if user.is_authenticated %}
+      <li class="login">어서오세요 {{user}}님</li>
+      <li class="logout"><a href="{%url 'CUJO:logout' %}"> 로그아웃 </a></li>
+      {%else%}
+      <li class="login"><a href="{%url 'CUJO:login' %}"> 로그인 </a></li>
+      <li class="logout">
+        <a href="{%url 'CUJO:signup' %}"> 회원가입 </a>
+      </li>
+      {%endif%}
+    </div>
   </body>
 </html>

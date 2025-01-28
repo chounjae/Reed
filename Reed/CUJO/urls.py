@@ -7,5 +7,7 @@ app_name = 'CUJO'
 urlpatterns = [
     path("login/", views.login_view, name='login'),
     path('', views.index,name='index'),
-    path('<int:dashboard_id>/', views.dashboard, name='dashboard')
+    path('<int:dashboard_id>/', views.dashboard, name='dashboard'),
+    path('logout/',views.logout_view,name='logout'),
+    path('signup/',views.signup_view, name='signup')
 ]
