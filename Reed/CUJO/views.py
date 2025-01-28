@@ -1,16 +1,36 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-
+from .models import PostDash, Comment, User, Author
 # Create your views here.
 
 
 def index(request) :
-    return render(request,'CUJO/index.html')
+    postdash = PostDash.objects.order_by('date')[:10]
+    context = {"Dashboard": postdash}
+    return render(request,'CUJO/index.html', context)
 
-def dashboard(request) :
-    return render(request,'CUJO/content.html')
+def dashboard(request, dashboard_id):
+    postdash = PostDash.objects.get(pk=dashboard_id)
+    context = {"Dashboard": postdash}
+    if request.method == "POST":
+        reaction = request.POST.get('reaction')
+        if reaction == "like":
+            postdash.like += 1  # 좋아요 증가
+        elif reaction == "unlike":
+            postdash.unlike += 1  # 싫어요 증가
+        postdash.save()  # 변경 사항 저장
+        
+
+    return render(request,'CUJO/content.html',context)
 
 def login_view(request) :
     if request.method == 'POST' :
-        print(request.POST)
-    return render(request,'CUJO/login.html')
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password = password)
+        if user is not None :
+            print('성공')
+            login(request, user)
+        else :
+            print('실패')
+    return render(request,'CUJO/login.html') 

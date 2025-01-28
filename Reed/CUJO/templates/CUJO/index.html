@@ -1,1 +1,12 @@
-<h1>My First Commit</h1>
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    {% if Dashboard %} {%for board in Dashboard%}
+    <li>
+      <a href="{% url 'CUJO:dashboard' board.id %}">{{board.title}}</a>
+    </li>
+    <br />
+    {%endfor%} {%else%} 게시판 없음 {%endif%}
+  </body>
+</html>

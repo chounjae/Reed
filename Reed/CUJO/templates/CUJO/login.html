@@ -2,11 +2,16 @@
 <html>
   <head></head>
   <body>
-    <form action="" method="post">
+    {%if user.is_authenticated %}
+    <h1>환영합니다  {{ user }}님!</h1>
+    <a href={%url "CUJO:index"%}>돌아가기</a>
+    {%else%}
+    <form action= " " method="POST">
       {% csrf_token %}
       <input name="username" type="text" />
       <input name="password" type="password" />
-      <input type="login" value="로그인" />
+      <input type="submit" value="로그인" />
+      {%endif%}
     </form>
   </body>
 </html>

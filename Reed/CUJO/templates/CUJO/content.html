@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      .box {
+        position: relative;
+        display: block;
+        width: 50%;
+        height: 500px;
+        margin: 30px auto;
+        border: solid gray 1px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        border-radius: 10px;
+      }
+      .intro {
+        text-align: right;
+        border-bottom: solid gray 1px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .mains {
+        display: block;
+        margin-left: 40px;
+      }
+      .likenum {
+        display: flex; /* 가로 정렬 */
+        justify-content: center; /* 가운데 정렬 */
+        gap: 20px; /* 좋아요와 싫어요 간격 */
+        position: absolute;
+        bottom: 10px; /* 게시판 아래쪽에 배치 */
+        left: 50%; /* 부모의 가운데 정렬 시작점 */
+        transform: translateX(-50%); /* 정확히 중앙으로 이동 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>{{Dashboard}}</h1>
+      <div class="intro">{{Dashboard.author}}, {{Dashboard.date}}</div>
+      <div class="mains">{{Dashboard.main}}</div>
+      <div class="likenum">
+        <form action="" method="post">
+          {%csrf_token%}
+          <input type="hidden" name="reaction" value="like" />
+          <button type="submit">좋아요</button>
+        </form>
+        {{Dashboard.like}} | {{Dashboard.unlike}}
+        <form action="" method="post">
+          {%csrf_token%}
+          <input type="hidden" name="reaction" value="unlike" />
+          <button type="submit">싫어요</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

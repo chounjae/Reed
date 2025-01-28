@@ -26,6 +26,5 @@ class Comment(models.Model) :
     main = models.TextField()
     like = models.IntegerField(default=0)
     unlike = models.IntegerField(default=0)
-
 class User(AbstractUser) :
     pass
