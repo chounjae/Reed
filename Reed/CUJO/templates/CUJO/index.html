@@ -30,23 +30,31 @@
         right: 20px;
         top: 40px;
       }
+      .write {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+      }
     </style>
   </head>
   <body>
     <div class="box">
-      {% if Dashboard %} {%for board in Dashboard%}
+      {%for board in Dashboard%}
       <ol>
         <a href="{% url 'CUJO:dashboard' board.id %}">{{board.title}}</a>
       </ol>
       <br />
-      {%endfor%} {%else%} 게시판 없음 {%endif%} {% if user.is_authenticated %}
+
+      {%endfor%} {% if user.is_authenticated %}
       <li class="login">어서오세요 {{user}}님</li>
       <li class="logout"><a href="{%url 'CUJO:logout' %}"> 로그아웃 </a></li>
+      <li class="write"><a href="{%url 'CUJO:write' %}"> 글쓰기 </a></li>
       {%else%}
       <li class="login"><a href="{%url 'CUJO:login' %}"> 로그인 </a></li>
       <li class="logout">
         <a href="{%url 'CUJO:signup' %}"> 회원가입 </a>
       </li>
+      <li class="write"><a href="{%url 'CUJO:login' %}"> 글쓰기 </a></li>
       {%endif%}
     </div>
   </body>

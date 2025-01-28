@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .box {
+        position: relative;
+        display: block;
+        width: 50%;
+        height: 500px;
+        margin: 30px auto;
+        border: solid gray 1px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        border-radius: 10px;
+      }
+      .signup {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <form action="" method="post">
+        {%csrf_token%}
+        <input name="title" type="text" />
+        <input name="main" type="text" />
+        <input type="submit" value="글쓰기" />
+      </form>
+    </div>
+  </body>
+</html>
