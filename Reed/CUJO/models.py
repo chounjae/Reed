@@ -20,6 +20,7 @@ class Author(models.Model) :
 
     def __str__(self) :
         return self.name
+    
 class Comment(models.Model) :
     dash = models.ForeignKey('PostDash', on_delete = models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default=0)

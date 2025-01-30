@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import PostDash, Comment, User, Author
+from django.core.paginator import Paginator
 # Create your views here.
 
 
 def index(request) :
-    postdash = PostDash.objects.order_by('-like')[:10]
-    context = {"Dashboard": postdash}
+    postdash = PostDash.objects.all()
+    pages = Paginator(postdash,5)
+    page_number = request.GET.get("page")
+    page_obj = pages.get_page(page_number)
+    context = {"Dashboard": page_obj}
     return render(request,'CUJO/index.html', context)
 
 def dashboard(request, dashboard_id):
