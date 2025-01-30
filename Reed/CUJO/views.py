@@ -48,12 +48,14 @@ def signup_view(request) :
         user.save()
         return redirect('CUJO:index')
     return render(request,'CUJO/signup.html')
+
 def write_dash(request) :
     if request.method == 'POST' :
         title = request.POST["title"]
         main = request.POST["main"]
-        author = Author.objects.get(id=1)
-        dash = PostDash.objects.create(title=title,author=author,main=main)
+        user = request.user
+        #author = Author.objects.get(id=1)
+        dash = PostDash.objects.create(title=title,user=user,main=main)
         dash.save()
         return redirect('CUJO:index')
     return render(request,'CUJO/write.html')

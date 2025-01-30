@@ -41,7 +41,9 @@
     <div class="box">
       {%for board in Dashboard%}
       <ol>
-        <a href="{% url 'CUJO:dashboard' board.id %}">{{board.title}}</a>
+        <a href="{% url 'CUJO:dashboard' board.id %}"
+          >{{board.title}} / {{board.date}} / {{board.user}}</a
+        >
       </ol>
       <br />
 
