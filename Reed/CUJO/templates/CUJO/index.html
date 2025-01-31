@@ -35,6 +35,11 @@
         right: 20px;
         bottom: 20px;
       }
+      .pagination {
+        position: absolute;
+        bottom: 20px;
+        left: 40px;
+      }
     </style>
   </head>
   <body>
@@ -58,7 +63,13 @@
       </li>
       <li class="write"><a href="{%url 'CUJO:login' %}"> 글쓰기 </a></li>
       {%endif%}
+      <div class="pagination">
+        <span class="step-links">
+          {% for pageview in Dashboard.paginator.page_range %}
+          <a href="?page={{pageview}}"> {{pageview}} |</a>
+          {%endfor%}
+        </span>
+      </div>
     </div>
-    Page {{ dashboard.number }} of {{ dashboard.paginator.num_pages }}.
   </body>
 </html>

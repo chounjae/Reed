@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 
 
 def index(request) :
-    postdash = PostDash.objects.all()
+    postdash = PostDash.objects.all().order_by('-like')
     pages = Paginator(postdash,5)
     page_number = request.GET.get("page")
     page_obj = pages.get_page(page_number)
