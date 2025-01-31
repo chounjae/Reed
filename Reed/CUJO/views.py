@@ -3,11 +3,19 @@ from django.contrib.auth import authenticate, login, logout
 from .models import PostDash, Comment, User, Author
 from django.core.paginator import Paginator
 # Create your views here.
-
+from django.db.models import Q
 
 def index(request) :
     postdash = PostDash.objects.all().order_by('-like')
     pages = Paginator(postdash,5)
+    search = request.GET.get('search','')
+    if search:
+        search_list = postdash.filter(
+      Q(title__icontains = search) 
+    )
+        pages = Paginator(search_list,5)
+                
+        
     page_number = request.GET.get("page")
     page_obj = pages.get_page(page_number)
     context = {"Dashboard": page_obj}
