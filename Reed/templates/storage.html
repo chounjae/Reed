@@ -12,22 +12,17 @@
         <nav>
             <ul class="nav-list">
                 <a href ="{%url 'Hello:index'%}">index</a>
-
             </ul>
         </nav>
     </header>
+
     <main>
         <div class="faq-container shadow-box ">
             <div>
-                <h2 class="center-a"><i class = "fas fa-book"></i> 기록하기</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    <div>
-                        <input name = 'title' type = 'text'>
-                        <input name = 'main_text' type = 'text'>
-                        <input type = 'submit' value = 'save'>
-                    </div>
-                </form>
+            
+                  <h2>{{memo.title}}</h2>  
+                  <pre> {{memo.main_text}} </pre>
+                    
             </div>
         </div>
     </main>

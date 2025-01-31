@@ -23,4 +23,5 @@ app_name = 'Hello'
 urlpatterns = [
    path('' , views.index_views , name = 'index'),
    path('memo/' , views.memo_views , name = 'memo'),
+   path('storage/' , views.storage_views , name = 'storage')
 ]
