@@ -17,15 +17,31 @@
       .signup {
         text-align: center;
       }
+
+      .title {
+        width: 100%;
+        height: 35px;
+        margin-bottom: 30px;
+      }
+      .main {
+        width: 100%;
+        height: 380px;
+        margin-bottom: 30px;
+      }
+      .button {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+      }
     </style>
   </head>
   <body>
     <div class="box">
       <form action="" method="post">
         {%csrf_token%}
-        <input name="title" type="text" />
-        <input name="main" type="text" />
-        <input type="submit" value="글쓰기" />
+        <input name="title" type="text" class="title" />
+        <input name="main" type="text" class="main" />
+        <input type="submit" value="글쓰기" class="button" />
       </form>
     </div>
   </body>
