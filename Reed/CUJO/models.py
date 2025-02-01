@@ -14,20 +14,16 @@ class PostDash(models.Model) :
 
     def __str__(self) :
         return self.title
-class Author(models.Model) :
-    name = models.CharField(max_length=10)
-    email = models.EmailField()
-
-    def __str__(self) :
-        return self.name
-    
 class Comment(models.Model) :
-    dash = models.ForeignKey('PostDash', on_delete = models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default=0)
+    dash = models.ForeignKey('PostDash', on_delete = models.CASCADE, default=0)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default=1)
+    mains = models.TextField()
     date = models.DateField(auto_now=True)
-    main = models.TextField()
     like = models.IntegerField(default=0)
     unlike = models.IntegerField(default=0)
+
+    def __str__(self) :
+        return self.mains
 class User(AbstractUser) :
     pass
     def __str__(self) :

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .models import PostDash, Comment, User, Author
+from .models import PostDash, Comment, User
 from django.core.paginator import Paginator
 # Create your views here.
 from django.db.models import Q
@@ -26,12 +26,22 @@ def dashboard(request, dashboard_id):
     context = {"Dashboard": postdash}
     if request.method == "POST":
         reaction = request.POST.get('reaction')
+        user = request.user
         if reaction == "like":
             postdash.like += 1  # 좋아요 증가
+            postdash.save()  # 변경 사항 저장
+            return redirect("CUJO:dashboard",dashboard_id)
         elif reaction == "unlike":
             postdash.unlike += 1  # 싫어요 증가
-        postdash.save()  # 변경 사항 저장
-        
+            postdash.save()  # 변경 사항 저장
+            return redirect("CUJO:dashboard",dashboard_id)
+        else :
+            mains = request.POST["mains"]
+            comment = Comment.objects.create(dash=postdash,user=user,mains=mains)
+            comment.save()
+            return redirect("CUJO:dashboard",dashboard_id)
+            
+
 
     return render(request,'CUJO/content.html',context)
 

@@ -2,6 +2,10 @@
 <html>
   <head>
     <style>
+      ol{
+        list-style :none;
+        text-align:right;
+      }
       h1 {
         text-align: center;
       }
@@ -36,10 +40,37 @@
         left: 50%; /* 부모의 가운데 정렬 시작점 */
         transform: translateX(-50%); /* 정확히 중앙으로 이동 */
       }
+      .title {
+        width: 100%;
+        height: 35px;
+        margin-bottom: 30px;
+      }
+      .commentbox {
+        position: relative;
+        display: block;
+        width: 50%;
+        margin: 30px auto;
+        border: solid gray 1px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+        border-radius: 10px;
+      }
+      .button{
+        text-align :right;
+      }
+      .comment{
+        text-align :left;
+        margin-left;
+      }
     </style>
   </head>
   <body>
+    {%if user.is_authenticated%}
     <div class="box">
+      <ol>
+        <a href="{%url 'CUJO:index' %}">뒤로가기</a>
+      </ol>
       <h1>{{Dashboard}}</h1>
       <div class="intro">{{Dashboard.user}}, {{Dashboard.date}}</div>
       <div class="mains">{{Dashboard.main}}</div>
@@ -57,5 +88,23 @@
         </form>
       </div>
     </div>
+    <div class="commentbox">
+      <form action="" method="post">
+        {%csrf_token%}
+        <input name="mains" type="text" class="title" />
+        <input type="submit" value="댓글 작성" class="button" />
+      </form>
+      <br>
+      {% for choice in Dashboard.comment_set.all %}
+      <li class ='comment'>{{choice.mains}} / {{choice.date}} / {{choice.user}}</li> <br><br>
+      {%endfor%}
+      {%else %}
+      <div class="box">
+        <h1>{{Dashboard}}</h1>
+        <div class="intro">{{Dashboard.user}}, {{Dashboard.date}}</div>
+        <div class="mains">{{Dashboard.main}}</div>
+        <div class="likenum">
+
+    {%endif%}
   </body>
 </html>
