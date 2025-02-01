@@ -1,3 +1,4 @@
+<!--메모 리스트-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBlog - Memo</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'memo.css' %}" />
 </head>
 <body>
     <header>
@@ -17,12 +18,17 @@
     </header>
 
     <main>
-        <div class="faq-container shadow-box ">
+        <div class="faq-container shadow-box">
             <div>
-            
-                  <h2>{{memo.title}}</h2>  
-                  <pre> {{memo.main_text}} </pre>
-                    
+                {% for list in dashboard%}
+                <ol>
+                    <a href="{% url 'Hello:storage_IDviews' list.id %}">
+                     {{list.title}} / {{list.main_text}} /{{list.date}}
+                    </a>
+                </ol>
+            </br>
+
+                {% endfor %}  
             </div>
         </div>
     </main>
