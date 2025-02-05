@@ -10,11 +10,10 @@
 </head>
 <body>
     <header>
-        <nav >
+        <nav>
             <ul class="nav-list">
                 <a href ="{%url 'Hello:index'%}">index</a>
                 <a href ="{%url 'Hello:storage'%}">storage</a>
-                <a href = "{%url 'Hello:logout'%}">logout</a>
 
             </ul>
         </nav>
@@ -22,10 +21,14 @@
     <main>
         <div class="faq-container shadow-box ">
             <div>
-                <h2 class="center-a"><i class = "fas fa-book"></i> index page</h2>
-                <form method="post">
+                <h2 class="center-a"><i class = "fas fa-book"></i>signup page</h2>
+                <form action = " " method="post">
                     {% csrf_token %}
-                    <a href = "{%url 'Hello:memo'%}" class = "href-item center-container">memo page</a>
+                    id <input name = "username" , type = "text"> 
+                    
+                    password<input name = "password" , type = "password">
+                    <br>
+                    <button type="submit">저장</button>                 
                 </form>
             </div>
         </div>

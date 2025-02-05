@@ -124,7 +124,7 @@ footer {
     text-align: center;
     margin: 20px 0;
 }
-
+/*그냥 이거 쓰자*/
 .center-container {
     display: flex;             /* flexbox를 사용하여 자식 요소를 정렬 */
     justify-content: center;   /* 가로 방향 중앙 정렬 */
@@ -164,7 +164,8 @@ footer {
 
 /* 하이퍼링크 아래 밑줄 제거*/
 .href-item{
-    color: inherit;
+    text-align: center;
+    color: #555;
     text-decoration: none;
 }
 

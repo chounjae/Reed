@@ -1,5 +1,6 @@
 from django.contrib import admin
-from Hello.models import DashBorad
+from Hello.models import DashBoard
 # Register your models here.
 
-admin.site.register(DashBorad)
+admin.site.register(DashBoard)
+

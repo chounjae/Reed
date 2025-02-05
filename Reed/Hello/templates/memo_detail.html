@@ -1,1 +1,16 @@
-de
+<!--home 기본 페이지-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'memo.css' %}" />
+</head>
+<body>   
+    <div>
+        <a href="{%url 'Hello:memo' %}" , class = "memu-item">memo</a>
+    </div>
+</body>
+</html>

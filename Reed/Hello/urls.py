@@ -27,4 +27,5 @@ urlpatterns = [
    #int:stor_id 해결 -> 어떻게 int 형식으로 링크 띄울껀지. 
    #그리고 이걸 이용해 어떻게 html에서 for문으로 글 리스트 출력할껀지
    path('storage/<int:storage_id>' , views.storage_IDviews , name = 'storage_IDviews'),
+   path('logout/' , views.logout_views , name = 'logout')
 ]

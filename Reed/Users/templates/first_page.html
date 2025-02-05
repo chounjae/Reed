@@ -1,4 +1,4 @@
-<!--메모 리스트-->
+<!--메모 작성 페이지-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,23 +12,17 @@
     <header>
         <nav>
             <ul class="nav-list">
-                <a href ="{%url 'Hello:index'%}">index</a>
+                <a href ="{%url 'Hello:index'%}">tmp</a>
             </ul>
         </nav>
     </header>
-
     <main>
-        <div class="faq-container shadow-box">
+        <div class="faq-container shadow-box ">
             <div>
-                {% for list in dashboard%}
-                <ol>
-                    <a href="{% url 'Hello:storage_IDviews' list.id %}">
-                     {{list.title}} / {{list.date}}
-                    </a>
-                </ol>
-            </br>
-
-                {% endfor %}  
+                <h2 class="center-a"><i class = "fas fa-book"></i>Hello,world!</h2>
+                <a href = "{%url 'Users:login'%}" class = "href-item center-container">login</a>
+                <br>
+                <a href = "{%url 'Users:signup'%}" class ="href-item center-container">signup</a>
             </div>
         </div>
     </main>
