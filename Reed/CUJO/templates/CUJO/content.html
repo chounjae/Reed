@@ -2,6 +2,18 @@
 <html>
   <head>
     <style>
+      a{
+        color : black;
+      }
+      .buttons{
+        text-decoration:none ;
+        padding : 5px;
+        color : black; 
+        background : white ;
+        border : gray solid 1px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+      }
       ol{
         list-style :none;
         text-align:right;
@@ -75,17 +87,10 @@
       <div class="intro">{{Dashboard.user}}, {{Dashboard.date}}</div>
       <div class="mains">{{Dashboard.main}}</div>
       <div class="likenum">
-        <form action="" method="post">
-          {%csrf_token%}
-          <input type="hidden" name="reaction" value="like" />
-          <button type="submit">좋아요</button>
-        </form>
-        {{Dashboard.like}} | {{Dashboard.unlike}}
-        <form action="" method="post">
-          {%csrf_token%}
-          <input type="hidden" name="reaction" value="unlike" />
-          <button type="submit">싫어요</button>
-        </form>
+        <a href ="{%url 'CUJO:likes' Dashboard.id%}" class ='buttons'>좋아요 </a>
+        {{ Dashboard.like_users.all|length }}
+        <a href ="{%url 'CUJO:dislikes' Dashboard.id%}" class ='buttons'>싫어요</a>
+        {{ Dashboard.dislike_users.all|length }}
       </div>
     </div>
     <div class="commentbox">
