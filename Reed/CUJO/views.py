@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 
 def index(request) :
-    postdash = PostDash.objects.all().order_by('-like')
+    postdash = PostDash.objects.all().order_by('-like_users')
     pages = Paginator(postdash,5)
     search = request.GET.get('search','')
     if search:
@@ -81,3 +81,25 @@ def write_dash(request) :
         dash.save()
         return redirect('CUJO:index')
     return render(request,'CUJO/write.html')
+
+def like_view(request, dashboard_id) :
+    if request.user.is_authenticated:
+        article = PostDash.objects.get(pk=dashboard_id)
+        if article.like_users.filter(pk=request.user.pk).exists():
+            # 좋아요 취소 (remove)
+            article.like_users.remove(request.user)
+        else:
+            # 좋아요 추가 (add)
+            article.like_users.add(request.user)
+        return redirect("CUJO:dashboard",dashboard_id)
+    return redirect('CUJO:login')
+
+def dislike_view(request, dashboard_id) :
+    if request.user.is_authenticated:
+        article = PostDash.objects.get(pk=dashboard_id)
+        if article.dislike_users.filter(pk=request.user.pk).exists():
+            article.dislike_users.remove(request.user)
+        else:
+            article.dislike_users.add(request.user)
+        return redirect("CUJO:dashboard",dashboard_id)
+    return redirect('CUJO:login')
