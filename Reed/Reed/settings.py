@@ -27,7 +27,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['reed-production.up.railway.app', 'localhost', '127.0.0.1']
 # 배포할 때 반드시 이렇게 코드도 변경해줘야 하낭?
 # Application definition
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://reed-production.up.railway.app',  # 배포된 URL
+]
 INSTALLED_APPS = [
     'CUJO',
     'django.contrib.admin',
