@@ -9,9 +9,8 @@ class PostDash(models.Model) :
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default=0)
     date = models.DateField(auto_now=True)
     main = models.TextField()
-    like = models.IntegerField(default=0)
-    unlike = models.IntegerField(default=0)
-
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_dash')
+    dislike_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='dislike_dash')
     def __str__(self) :
         return self.title
 class Comment(models.Model) :
@@ -19,8 +18,8 @@ class Comment(models.Model) :
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE, default=1)
     mains = models.TextField()
     date = models.DateField(auto_now=True)
-    like = models.IntegerField(default=0)
-    unlike = models.IntegerField(default=0)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_da')
+    dislike_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='dislike_da')
 
     def __str__(self) :
         return self.mains
