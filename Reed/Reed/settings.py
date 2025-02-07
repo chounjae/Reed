@@ -127,4 +127,8 @@ AUTH_USER_MODEL = 'Users.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['0.0.0.0',
+                 '127.0.0.1',
+                 'localhost',
+                 'reed-production-93ab.up.railway.app',
+                 ]
