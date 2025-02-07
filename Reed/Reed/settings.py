@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://reed-production-93ab.up.railway.app/Users/',  # 배포된 URL
+    'https://reed-production-93ab.up.railway.app/',  # 배포된 URL
 ]
 
 
@@ -122,11 +122,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# static 파일을 찾는 기본 경로
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # 배포 환경에서 사용할 경로
-STATICFILES_DIRS = [BASE_DIR / "static"]  # 정적 파일이 있는 디렉토리 경로
+
+# 로컬 환경에서 static 파일이 위치하는 경로
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+# 배포 환경에서는 static 파일들이 수집되는 경로
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 AUTH_USER_MODEL = 'Users.User'
+
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # static 파일 서빙을 위한 미들웨어
+    # 다른 미들웨어들...
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # 압축된 정적 파일을 사용하도록 설정
 
 
 # Default primary key field type
