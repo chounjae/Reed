@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://reed-production-93ab.up.railway.app/Users/',  # 배포된 URL
+]
+
+
 
 # Application definition
 
@@ -117,7 +122,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # 배포 환경에서 사용할 경로
+STATICFILES_DIRS = [BASE_DIR / "static"]  # 정적 파일이 있는 디렉토리 경로
 
 AUTH_USER_MODEL = 'Users.User'
 
