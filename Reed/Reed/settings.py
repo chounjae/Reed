@@ -135,12 +135,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 AUTH_USER_MODEL = 'Users.User'
 
-MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # static 파일 서빙을 위한 미들웨어
-    # 다른 미들웨어들...
-]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # 압축된 정적 파일을 사용하도록 설정
 
 
 # Default primary key field type
