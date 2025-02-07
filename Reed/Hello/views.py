@@ -41,7 +41,7 @@ def storage_IDviews(request , storage_id) :
     IDviews = DashBoard.objects.get(pk = storage_id)
     IDviews.save()
     
-    return render(request , 'Hello/memo_detail.html' , {'dashborad': IDviews})
+    return render(request , 'memo_detail.html' , {'dashborad': IDviews})
 
 @login_required
 def logout_views(request) :

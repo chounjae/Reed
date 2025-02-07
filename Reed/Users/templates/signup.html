@@ -24,10 +24,11 @@
                 <h2 class="center-a"><i class = "fas fa-book"></i>signup page</h2>
                 <form action = " " method="post">
                     {% csrf_token %}
-                    id <input name = "username" , type = "text"> 
+                    id 
+                    <input name = "username" , type = "text">                     
+                    password
+                    <input name = "password" , type = "password">
                     
-                    password<input name = "password" , type = "password">
-                    <br>
                     <button type="submit">저장</button>                 
                 </form>
             </div>

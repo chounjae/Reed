@@ -1,16 +1,28 @@
-<!--home 기본 페이지-->
+<!--메모 작성 페이지-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>MyBlog - Memo</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'memo.css' %}" />
 </head>
-<body>   
-    <div>
-        <a href="{%url 'Hello:memo' %}" , class = "memu-item">memo</a>
-    </div>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-list">
+                <a href ="{%url 'Hello:index'%}">tmp</a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="faq-container shadow-box ">
+            <div class="memo-detail">
+               <h2>{{dashborad.title}}</h2>
+               <pre>{{dashborad.main_text}}</pre>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
