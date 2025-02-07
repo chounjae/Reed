@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-0@j)a%n06eh5^!506@6oma=lyrtt8gz+319@h2i0)a@-#dbbod
 DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://reed-production-93ab.up.railway.app/',  # 배포된 URL
+    'https://reed-production-93ab.up.railway.app',  # 배포된 URL
 ]
 
 
