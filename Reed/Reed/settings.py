@@ -25,12 +25,9 @@ SECRET_KEY = 'django-insecure-0@j)a%n06eh5^!506@6oma=lyrtt8gz+319@h2i0)a@-#dbbod
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 CSRF_TRUSTED_ORIGINS = [
     'https://reed-production-93ab.up.railway.app/',  # 배포된 URL
 ]
-
 
 
 # Application definition
